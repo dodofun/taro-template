@@ -1,24 +1,21 @@
-import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components'
+import React, {useEffect} from 'react'
+import {View, Text} from '@tarojs/components'
+import {useRouter} from '@tarojs/taro'
 import './index.scss'
 
-export default class Index extends Component {
+export default (props) => {
+  console.log('props', props)
 
-  componentWillMount () { }
+  const router = useRouter()
+  console.log('router', router)
 
-  componentDidMount () { }
+  useEffect(() => {
+    console.log('app')
+  }, [])
 
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
-    return (
-      <View className='index'>
-        <Text>Hello world!</Text>
-      </View>
-    )
-  }
+  return (
+    <View className='index'>
+      <Text>Hello world!</Text>
+    </View>
+  )
 }
