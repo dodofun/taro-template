@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {View, Text} from '@tarojs/components'
 import {useRouter} from '@tarojs/taro'
 import './index.scss'
+import {getEnv} from '@/utils/common'
 
 export default (props) => {
   console.log('props', props)
@@ -10,7 +11,8 @@ export default (props) => {
   console.log('router', router)
 
   useEffect(() => {
-    console.log('app')
+    // @ts-ignore
+    console.log('app', API_HOST, getEnv())
   }, [])
 
   return (

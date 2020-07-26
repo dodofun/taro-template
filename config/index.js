@@ -1,3 +1,4 @@
+const path = require('path')
 const config = {
   projectName: 'taro-template',
   date: '2020-7-26',
@@ -11,6 +12,12 @@ const config = {
   outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: [],
   defineConstants: {
+  },
+  alias: {
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+    '@/package': path.resolve(__dirname, '..', 'package.json'),
+    '@/project': path.resolve(__dirname, '..', 'project.config.json'),
   },
   copy: {
     patterns: [
