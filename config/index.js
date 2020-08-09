@@ -1,3 +1,5 @@
+import webpackChain from './webpackChain.js'
+
 const path = require('path')
 const config = {
   projectName: 'taro-template',
@@ -11,6 +13,7 @@ const config = {
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: [],
+  presets: [],
   defineConstants: {
   },
   alias: {
@@ -26,12 +29,21 @@ const config = {
     }
   },
   framework: 'react',
+  terser: {
+    enable: true,
+    config: {}
+  },
   mini: {
     postcss: {
+      autoprefixer: {
+        enable: true,
+        config: {
+          // autoprefixer 配置项
+        }
+      },
       pxtransform: {
         enable: true,
         config: {
-
         }
       },
       url: {
@@ -47,15 +59,31 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
-    }
+    },
+    commonChunks: ['runtime', 'vendors', 'taro', 'common'],
   },
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    output: {
+      filename: 'js/[name].[hash:8].js',
+      // chunkFilename: 'js/[name].[chunkhash:8].js'
+    },
+    router: {
+      mode: 'browser',
+      basename: '',
+      customRoutes: {},
+    },
     postcss: {
       autoprefixer: {
         enable: true,
         config: {
+        }
+      },
+      pxtransform: {
+        enable: true,
+        config: {
+          /* pxtransform 配置项 */
         }
       },
       cssModules: {
@@ -65,7 +93,9 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
-    }
+    },
+    esnextModules: ['taro-ui'],
+    // webpackChain
   }
 }
 

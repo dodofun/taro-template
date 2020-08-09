@@ -6,5 +6,9 @@ module.exports = {
     API_HOST: '"https://api.dodo.fun"'
   },
   mini: {},
-  h5: {}
+  h5: {
+    devServer: {
+      port: 10086
+    }
+  }
 }
